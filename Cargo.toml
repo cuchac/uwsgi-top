@@ -1,0 +1,13 @@
+[package]
+name = "uwsgi-top"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cursive = { version = "0.20.0", features = ["crossterm-backend"] }
+cursive_table_view = "0.14.0"
+serde_json = "1.0.108"
+serde = { version = "1.0.193", features = ["derive"] }
+lazy_static = "1.4.0"

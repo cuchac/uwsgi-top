@@ -1,0 +1,859 @@
+{
+  "version": "2.1-dev",
+  "listen_queue": 0,
+  "listen_queue_errors": 0,
+  "signal_queue": 0,
+  "load": 0,
+  "pid": 26,
+  "uid": 0,
+  "gid": 0,
+  "cwd": "/var/www/html",
+  "locks": [
+    {
+      "user 0": 0
+    },
+    {
+      "signal": 0
+    },
+    {
+      "filemon": 0
+    },
+    {
+      "timer": 0
+    },
+    {
+      "rbtimer": 0
+    },
+    {
+      "cron": 0
+    },
+    {
+      "rpc": 0
+    },
+    {
+      "snmp": 0
+    }
+  ],
+  "sockets": [
+    {
+      "name": "127.0.0.1:40279",
+      "proto": "uwsgi",
+      "queue": 0,
+      "max_queue": 100,
+      "shared": 0,
+      "can_offload": 1
+    }
+  ],
+  "workers": [
+    {
+      "id": 1,
+      "pid": 1751,
+      "accepting": 1,
+      "requests": 9361,
+      "delta_requests": 787,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "idle",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 439603973,
+      "last_spawn": 1703104406,
+      "respawn_count": 9,
+      "tx": 915995503,
+      "avg_rt": 130882,
+      "apps": [
+      ],
+      "cores":[
+        {
+          "id":0,
+          "requests":58793,
+          "static_requests":45347,
+          "routed_requests":0,
+          "offloaded_requests":45324,
+          "write_errors":0,
+          "read_errors":0,
+          "in_request":1,
+          "vars":[
+            "REQUEST_METHOD=GET",
+            "REQUEST_URI=/ortovox-swisswool-zinal-jacket-w_z32205/",
+            "PATH_INFO=/ortovox-swisswool-zinal-jacket-w_z32205/",
+            "QUERY_STRING=",
+            "SERVER_PROTOCOL=HTTP/1.1",
+            "SCRIPT_NAME=",
+            "SERVER_NAME=wpjshop-755777d6fd-6khn4",
+            "SERVER_PORT=80",
+            "UWSGI_ROUTER=http",
+            "REMOTE_ADDR=10.160.5.27",
+            "REMOTE_PORT=54476",
+            "HTTP_HOST=www.hanibal.cz",
+            "HTTP_X_REQUEST_ID=5c590095620bbbdd5df677fe0346efe0",
+            "HTTP_X_REAL_IP=66.249.64.33",
+            "HTTP_X_FORWARDED_FOR=66.249.64.33",
+            "HTTP_X_FORWARDED_HOST=www.hanibal.cz",
+            "HTTP_X_FORWARDED_PORT=443",
+            "HTTP_X_FORWARDED_PROTO=https",
+            "HTTP_X_FORWARDED_SCHEME=https",
+            "HTTP_X_SCHEME=https",
+            "HTTP_X_ORIGINAL_FORWARDED_FOR=66.249.64.33, 66.249.64.33",
+            "HTTP_AMP_CACHE_TRANSFORM=google;v=\"1..8\"",
+            "HTTP_ACCEPT=text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8",
+            "HTTP_FROM=googlebot(at)googlebot.com",
+            "HTTP_USER_AGENT=Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+            "HTTP_ACCEPT_ENCODING=gzip, deflate, br",
+            "HTTP_IF_MODIFIED_SINCE=Wed, 20 Dec 2023 13:49:07 GMT",
+            "HTTP_CF_CONNECTING_IP=66.249.64.33",
+            ""
+          ],
+          "req_info":                                     {
+            "request_start":1703112422
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "pid": 1787,
+      "accepting": 1,
+      "requests": 17499,
+      "delta_requests": 458,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "idle",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 622011666,
+      "last_spawn": 1703105337,
+      "respawn_count": 8,
+      "tx": 1145166154,
+      "avg_rt": 113488,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 17499,
+          "static_requests": 13940,
+          "routed_requests": 0,
+          "offloaded_requests": 13938,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "pid": 0,
+      "accepting": 1,
+      "requests": 5569,
+      "delta_requests": 14,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 260825332,
+      "last_spawn": 1703102549,
+      "respawn_count": 6,
+      "tx": 489405972,
+      "avg_rt": 294383,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 5569,
+          "static_requests": 4394,
+          "routed_requests": 0,
+          "offloaded_requests": 4394,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "pid": 0,
+      "accepting": 1,
+      "requests": 6204,
+      "delta_requests": 1128,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 261708415,
+      "last_spawn": 1703102549,
+      "respawn_count": 4,
+      "tx": 336731523,
+      "avg_rt": 116712,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 6204,
+          "static_requests": 4916,
+          "routed_requests": 0,
+          "offloaded_requests": 4916,
+          "write_errors": 1,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "pid": 0,
+      "accepting": 1,
+      "requests": 3986,
+      "delta_requests": 2117,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 142186718,
+      "last_spawn": 1703102549,
+      "respawn_count": 3,
+      "tx": 352743783,
+      "avg_rt": 88451,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 3986,
+          "static_requests": 3205,
+          "routed_requests": 0,
+          "offloaded_requests": 3203,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "pid": 0,
+      "accepting": 1,
+      "requests": 102,
+      "delta_requests": 102,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 22116539,
+      "last_spawn": 1703078818,
+      "respawn_count": 1,
+      "tx": 11705132,
+      "avg_rt": 348586,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 102,
+          "static_requests": 49,
+          "routed_requests": 0,
+          "offloaded_requests": 49,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "pid": 0,
+      "accepting": 1,
+      "requests": 247,
+      "delta_requests": 247,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 28657729,
+      "last_spawn": 1703078831,
+      "respawn_count": 1,
+      "tx": 38570186,
+      "avg_rt": 1143765,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 247,
+          "static_requests": 110,
+          "routed_requests": 0,
+          "offloaded_requests": 110,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "pid": 0,
+      "accepting": 0,
+      "requests": 0,
+      "delta_requests": 0,
+      "exceptions": 0,
+      "harakiri_count": 0,
+      "signals": 0,
+      "signal_queue": 0,
+      "status": "cheap",
+      "rss": 0,
+      "vsz": 0,
+      "uss": 0,
+      "pss": 0,
+      "running_time": 0,
+      "last_spawn": 0,
+      "respawn_count": 0,
+      "tx": 0,
+      "avg_rt": 0,
+      "apps": [
+      ],
+      "cores": [
+        {
+          "id": 0,
+          "requests": 0,
+          "static_requests": 0,
+          "routed_requests": 0,
+          "offloaded_requests": 0,
+          "write_errors": 0,
+          "read_errors": 0,
+          "in_request": 0,
+          "vars": [
+          ],
+          "req_info": {
+          }
+        }
+      ]
+    }
+  ]
+}
