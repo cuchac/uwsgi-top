@@ -1,9 +1,9 @@
-use std::cmp::Ordering;
+use crate::uwsgi_struct::Worker;
 use cursive::align::HAlign;
 use cursive_table_view::{TableView, TableViewItem};
-use crate::uwsgi_struct::Worker;
+use std::cmp::Ordering;
 
-pub type UiTableView = TableView::<UwsgiTableRow, BasicColumn>;
+pub type UiTableView = TableView<UwsgiTableRow, BasicColumn>;
 
 // Provide a type for the table's columns
 #[derive(Copy, Clone, PartialEq, Eq, Hash)]
@@ -29,7 +29,7 @@ impl UwsgiTableRow {
             index: worker.id as usize,
             uri: worker.get_uri().clone(),
             status: worker.status.clone(),
-            duration: worker.id as usize,
+            duration: worker.get_duration(),
         }
     }
 }
@@ -44,7 +44,10 @@ impl TableViewItem<BasicColumn> for UwsgiTableRow {
         }
     }
 
-    fn cmp(&self, other: &Self, column: BasicColumn) -> Ordering where Self: Sized {
+    fn cmp(&self, other: &Self, column: BasicColumn) -> Ordering
+    where
+        Self: Sized,
+    {
         match column {
             BasicColumn::Index => self.index.cmp(&other.index),
             BasicColumn::Status => self.status.cmp(&other.status),
@@ -52,17 +55,18 @@ impl TableViewItem<BasicColumn> for UwsgiTableRow {
             BasicColumn::Duration => self.duration.cmp(&other.duration),
         }
     }
-
 }
 
-pub fn create_table() -> TableView::<UwsgiTableRow, BasicColumn> {
+pub fn create_table() -> TableView<UwsgiTableRow, BasicColumn> {
     // Configure the actual table
     TableView::<UwsgiTableRow, BasicColumn>::new()
         .column(BasicColumn::Index, "Worker", |c| {
             c.align(HAlign::Right).width(2)
         })
         .column(BasicColumn::Status, "Status", |c| c.width(5))
-        .column(BasicColumn::Duration, "Duration", |c| c.width(5).align(HAlign::Center))
+        .column(BasicColumn::Duration, "Duration", |c| {
+            c.width(5).align(HAlign::Center)
+        })
         .column(BasicColumn::Uri, "Uri", |c| c)
         .default_column(BasicColumn::Index)
 }
