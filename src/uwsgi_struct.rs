@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
@@ -11,6 +12,7 @@ pub struct Core {
     pub id: i64,
     pub vars: Vec<String>,
     pub req_info: ReqInfo,
+    pub parsed_vars: Option<HashMap<String, String>>,
 }
 
 #[derive(Serialize, Deserialize)]
