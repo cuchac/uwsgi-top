@@ -1,4 +1,4 @@
-use cursive::views::Dialog;
+use cursive::views::{Dialog, TextView};
 use cursive::Cursive;
 use std::ops::DerefMut;
 use std::sync::Mutex;
@@ -12,10 +12,14 @@ use lazy_static::lazy_static;
 
 pub struct Ui {
     reader: Option<StatsReader>,
+    status: Option<UwsgiStatus>,
 }
 
 lazy_static! {
-    pub static ref APP: Mutex<Ui> = Mutex::new(Ui { reader: None });
+    pub static ref APP: Mutex<Ui> = Mutex::new(Ui {
+        reader: None,
+        status: None
+    });
 }
 
 impl Ui {
@@ -24,7 +28,7 @@ impl Ui {
 
         let mut siv = cursive::default();
 
-        let table = create_table();
+        let table = create_table().on_submit(|s, row, _index| Ui::show_detail(s, row));
 
         siv.add_layer(Dialog::around(table.with_name("table").full_screen()));
 
@@ -41,7 +45,14 @@ impl Ui {
             .find_name::<UiTableView>("table")
             .expect("Should find table");
 
-        let rows: Vec<UwsgiTableRow> = Ui::read()
+        Ui::read();
+
+        let rows: Vec<UwsgiTableRow> = APP
+            .lock()
+            .unwrap()
+            .status
+            .as_mut()
+            .unwrap()
             .workers
             .iter_mut()
             .filter_map(|w| {
@@ -56,7 +67,19 @@ impl Ui {
         table.set_items(rows);
     }
 
-    fn read() -> UwsgiStatus {
-        APP.lock().unwrap().reader.as_mut().unwrap().read()
+    fn read() {
+        let mut app = APP.lock().unwrap();
+        let status = app.reader.as_mut().unwrap().read();
+        app.status = Some(status);
+    }
+
+    fn show_detail(s: &mut Cursive, row: usize) {
+        let app = APP.lock().unwrap();
+        let status = app.status.as_ref().unwrap();
+        s.add_layer(
+            Dialog::around(TextView::new(status.workers[row].get_uri())).button("OK", |s| {
+                s.pop_layer();
+            }),
+        )
     }
 }

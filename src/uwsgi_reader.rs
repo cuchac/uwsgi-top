@@ -1,5 +1,4 @@
 use crate::uwsgi_struct::{Core, UwsgiStatus, Worker};
-use std::collections::HashMap;
 use std::fs::File;
 use std::io::{Read, Seek};
 use std::time::{SystemTime, UNIX_EPOCH};
@@ -30,7 +29,7 @@ impl StatsReader {
 }
 
 impl Worker {
-    pub fn get_uri(&mut self) -> String {
+    pub fn get_uri(&self) -> String {
         self.cores[0].get_var("REQUEST_URI")
     }
 
@@ -42,27 +41,17 @@ impl Worker {
         }
 
         let start = SystemTime::now();
-        (start.duration_since(UNIX_EPOCH).expect("Invalid time").as_secs() - rs) as usize
+        (start
+            .duration_since(UNIX_EPOCH)
+            .expect("Invalid time")
+            .as_secs()
+            - rs) as usize
     }
 }
 
 impl Core {
-    pub fn get_var(&mut self, name: &str) -> String {
-        if self.parsed_vars.is_none() {
-            let mut map = HashMap::new();
-
-            self.vars.iter().for_each(|v| {
-                let parts = v.split_once('=');
-
-                if parts.is_some() {
-                    map.insert(parts.unwrap().0.to_string(), parts.unwrap().1.to_string());
-                }
-            });
-
-            self.parsed_vars = Some(map);
-        }
-
-        match self.parsed_vars.as_mut().unwrap().get(name) {
+    pub fn get_var(&self, name: &str) -> String {
+        match self.vars.get(name) {
             Some(v) => v.clone(),
             None => String::from(""),
         }
