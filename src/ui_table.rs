@@ -20,16 +20,16 @@ pub struct UwsgiTableRow {
     index: usize,
     status: String,
     uri: String,
-    duration: usize,
+    duration: i64,
 }
 
 impl UwsgiTableRow {
     pub fn new_from_worker(worker: &mut Worker) -> UwsgiTableRow {
         UwsgiTableRow {
             index: worker.id as usize,
-            uri: worker.get_uri().clone(),
             status: worker.status.clone(),
-            duration: worker.get_duration(),
+            duration: if worker.has_request() {worker.get_duration()} else {-1},
+            uri: if worker.has_request() {worker.get_uri().clone()} else {"".to_string()},
         }
     }
 }
