@@ -1,23 +1,55 @@
 use crate::uwsgi_struct::{Core, UwsgiStatus, Worker};
+use crate::Settings;
 use std::fs::File;
 use std::io::{Read, Seek};
+use std::os::unix::net::UnixStream;
+use std::path::PathBuf;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 pub struct StatsReader {
-    file: File,
+    settings: Settings,
 }
 
 impl StatsReader {
-    pub fn new(path: &str) -> StatsReader {
-        let file = File::open(path).expect("path should be valid json file");
-
-        StatsReader { file }
+    pub fn new(settings: &Settings) -> StatsReader {
+        return StatsReader {
+            settings: settings.clone(),
+        };
     }
 
-    pub fn read(&mut self) -> UwsgiStatus {
+    pub fn read(&self) -> UwsgiStatus {
+        if self.settings.file.is_some() {
+            return StatsReader::read_from_file(self.settings.file.as_ref().unwrap());
+        }
+
+        if self.settings.socket.is_some() {
+            return StatsReader::read_from_socket(self.settings.socket.as_ref().unwrap());
+        }
+
+        if self.settings.network.is_some() {
+            panic!("Not implemented network reading")
+        }
+
+        panic!("No input method selected!")
+    }
+
+    fn read_from_file(file: &PathBuf) -> UwsgiStatus {
+        let mut file = File::open(file).expect("path should be valid json file");
         let mut content = String::new();
-        self.file.rewind().expect("file should be able to rewind");
-        self.file
+        file.rewind().expect("file should be able to rewind");
+        file.read_to_string(&mut content)
+            .expect("file should contains");
+
+        let json: UwsgiStatus =
+            serde_json::from_str(content.as_str()).expect("file content should contain valid json");
+
+        json
+    }
+
+    fn read_from_socket(path: &PathBuf) -> UwsgiStatus {
+        let mut socket = UnixStream::connect(path).expect("socket should be able to connect");
+        let mut content = String::new();
+        socket
             .read_to_string(&mut content)
             .expect("file should contains");
 
@@ -30,14 +62,11 @@ impl StatsReader {
 
 impl Worker {
     pub fn get_uri(&self) -> String {
-        let mut parts = vec!["https://".to_string(), self.cores[0].get_var("HTTP_HOST"), self.cores[0].get_var("REQUEST_URI")];
+        self.cores[0].get_uri()
+    }
 
-        let qs = self.cores[0].get_var("QUERY_STRING");
-        if !qs.is_empty() {
-            parts.push(format!("?{qs}"))
-        }
-
-        parts.join("")
+    pub fn get_core(&self) -> &Core {
+        &self.cores[0]
     }
 
     pub fn get_duration(&self) -> i64 {
@@ -66,5 +95,20 @@ impl Core {
             Some(v) => v.clone(),
             None => String::from(""),
         }
+    }
+
+    pub fn get_uri(&self) -> String {
+        let mut parts = vec![
+            "https://".to_string(),
+            self.get_var("HTTP_HOST"),
+            self.get_var("REQUEST_URI"),
+        ];
+
+        let qs = self.get_var("QUERY_STRING");
+        if !qs.is_empty() {
+            parts.push(format!("?{qs}"))
+        }
+
+        parts.join("")
     }
 }

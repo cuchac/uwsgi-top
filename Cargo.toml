@@ -11,3 +11,4 @@ cursive_table_view = "0.14.0"
 serde_json = "1.0.108"
 serde = { version = "1.0.193", features = ["derive"] }
 lazy_static = "1.4.0"
+clap = { version = "4.4.12", features = ["derive"] }

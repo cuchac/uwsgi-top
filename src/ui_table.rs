@@ -28,8 +28,16 @@ impl UwsgiTableRow {
         UwsgiTableRow {
             index: worker.id as usize,
             status: worker.status.clone(),
-            duration: if worker.has_request() {worker.get_duration()} else {-1},
-            uri: if worker.has_request() {worker.get_uri().clone()} else {"".to_string()},
+            duration: if worker.has_request() {
+                worker.get_duration()
+            } else {
+                -1
+            },
+            uri: if worker.has_request() {
+                worker.get_uri().clone()
+            } else {
+                "".to_string()
+            },
         }
     }
 }
