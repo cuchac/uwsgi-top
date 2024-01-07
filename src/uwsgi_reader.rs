@@ -2,6 +2,7 @@ use crate::uwsgi_struct::{Core, UwsgiStatus, Worker};
 use crate::Settings;
 use std::fs::File;
 use std::io::{Read, Seek};
+use std::net::TcpStream;
 use std::os::unix::net::UnixStream;
 use std::path::PathBuf;
 use std::time::{SystemTime, UNIX_EPOCH};
@@ -27,7 +28,7 @@ impl StatsReader {
         }
 
         if self.settings.network.is_some() {
-            panic!("Not implemented network reading")
+            return StatsReader::read_from_network(self.settings.network.as_ref().unwrap());
         }
 
         panic!("No input method selected!")
@@ -55,6 +56,19 @@ impl StatsReader {
 
         let json: UwsgiStatus =
             serde_json::from_str(content.as_str()).expect("file content should contain valid json");
+
+        json
+    }
+
+    fn read_from_network(address: &std::net::SocketAddr) -> UwsgiStatus {
+        let mut socket = TcpStream::connect(address).expect("address should be able to connect");
+        let mut content = String::new();
+        socket
+            .read_to_string(&mut content)
+            .expect("address should return data");
+
+        let json: UwsgiStatus =
+            serde_json::from_str(content.as_str()).expect("returned data should contain valid json");
 
         json
     }
