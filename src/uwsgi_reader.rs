@@ -67,8 +67,8 @@ impl StatsReader {
             .read_to_string(&mut content)
             .expect("address should return data");
 
-        let json: UwsgiStatus =
-            serde_json::from_str(content.as_str()).expect("returned data should contain valid json");
+        let json: UwsgiStatus = serde_json::from_str(content.as_str())
+            .expect("returned data should contain valid json");
 
         json
     }

@@ -68,12 +68,12 @@ impl TableViewItem<BasicColumn> for UwsgiTableRow {
 pub fn create_table() -> TableView<UwsgiTableRow, BasicColumn> {
     // Configure the actual table
     TableView::<UwsgiTableRow, BasicColumn>::new()
-        .column(BasicColumn::Index, "Worker", |c| {
-            c.align(HAlign::Right).width(2)
+        .column(BasicColumn::Index, "ID", |c| {
+            c.align(HAlign::Right).width(5)
         })
         .column(BasicColumn::Status, "Status", |c| c.width(5))
         .column(BasicColumn::Duration, "Duration", |c| {
-            c.width(5).align(HAlign::Center)
+            c.width(7).align(HAlign::Center)
         })
         .column(BasicColumn::Uri, "Uri", |c| c)
         .default_column(BasicColumn::Index)

@@ -1,8 +1,9 @@
+use cursive::direction::Orientation::Vertical;
+use cursive::theme::{ColorStyle};
 use cursive::views::{Dialog, LinearLayout, SelectView, TextView};
 use cursive::{Cursive, Vec2};
 use std::ops::DerefMut;
 use std::sync::Mutex;
-use cursive::direction::Orientation::Vertical;
 
 use crate::uwsgi_reader::StatsReader;
 
@@ -31,7 +32,20 @@ impl Ui {
 
         let table = create_table().on_submit(|s, row, _index| Ui::show_detail(s, row));
 
-        siv.add_layer(Dialog::around(table.with_name("table").full_screen()));
+        siv.add_fullscreen_layer(
+            LinearLayout::vertical()
+                .child(Dialog::around(
+                    LinearLayout::new(Vertical)
+                        .child(table.with_name("table").full_screen())
+                        .full_screen(),
+                ))
+                .child(
+                    TextView::new("UwsgiTop - R = Refresh, Select = Show request detail")
+                        .style(ColorStyle::highlight_inactive())
+                        .fixed_height(1)
+                        .full_width(),
+                ),
+        );
 
         siv.add_global_callback('q', |s| s.quit());
         siv.add_global_callback('r', |s| Ui::refresh(s));
@@ -79,11 +93,9 @@ impl Ui {
         let status = app.status.as_ref().unwrap();
         let value = TextView::new("value").with_name("value");
 
-        let mut select: SelectView<String> = SelectView::new()
-            .on_select(|s: &mut Cursive, v: &String| {
-                let mut value_view = s
-                    .find_name::<TextView>("value")
-                    .expect("Should find value");
+        let mut select: SelectView<String> =
+            SelectView::new().on_select(|s: &mut Cursive, v: &String| {
+                let mut value_view = s.find_name::<TextView>("value").expect("Should find value");
                 value_view.set_content(v)
             });
 
@@ -94,9 +106,15 @@ impl Ui {
         select.add_item("Body", "".to_string());
 
         s.add_layer(
-            Dialog::around(LinearLayout::new(Vertical).child(select).child(value).min_size(Vec2::new(50, 50))).button("OK", |s| {
+            Dialog::around(
+                LinearLayout::new(Vertical)
+                    .child(select)
+                    .child(value)
+                    .min_size(Vec2::new(50, 50)),
+            )
+            .button("OK", |s| {
                 s.pop_layer();
-            })
+            }),
         )
     }
 }

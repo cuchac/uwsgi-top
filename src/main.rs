@@ -6,6 +6,7 @@ mod ui;
 mod ui_table;
 mod uwsgi_reader;
 mod uwsgi_struct;
+mod ui_detail;
 
 /// Top-like interface for uwsgi workers status
 #[derive(Parser, Debug, Clone)]
