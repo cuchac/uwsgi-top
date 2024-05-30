@@ -79,10 +79,6 @@ impl Worker {
         self.cores[0].get_uri()
     }
 
-    pub fn get_core(&self) -> &Core {
-        &self.cores[0]
-    }
-
     pub fn get_duration(&self) -> i64 {
         let rs = self.cores[0].req_info.request_start;
 
