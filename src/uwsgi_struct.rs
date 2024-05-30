@@ -1,17 +1,19 @@
 use serde::{Deserialize, Deserializer, Serialize};
 use std::collections::HashMap;
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize)]
 pub struct ReqInfo {
     #[serde(default)]
     pub request_start: u64,
 }
 
-#[derive(Serialize, Deserialize, Clone)]
+pub type Variables = HashMap<String, String>;
+
+#[derive(Serialize, Deserialize)]
 pub struct Core {
     pub id: i64,
     #[serde(deserialize_with = "parse_vars")]
-    pub vars: HashMap<String, String>,
+    pub vars: Variables,
     pub req_info: ReqInfo,
 }
 
@@ -35,7 +37,7 @@ where
     Ok(map)
 }
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize)]
 pub struct Worker {
     pub id: i64,
     pub status: String,
